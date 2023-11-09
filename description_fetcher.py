@@ -61,9 +61,10 @@ def json_to_csv(csv_out_path: str = OUT_FILE_PATH) -> None:
 if JSON_DUMP_PATH.is_file:
     isbns = load_json_from_file()
     logging.warning("JSON dump file loaded.")
+else:
+    isbns = {}
 
 if not isbns:
-    isbns = {}
     with open(FILE_PATH, "r", newline="") as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
